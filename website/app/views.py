@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def welcome(request):
-    return HttpResponse("Willkommen App")
+    return HttpResponse("Willkommen App test <a href=/admin>admin</a>")
 
 
 def about(request):
