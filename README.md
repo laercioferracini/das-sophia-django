@@ -35,13 +35,13 @@ In the views.py, create a function that returns an HttpResponse
 **Run and view the page**
 ```python manager.py runserver```
 
-**Setting up a Data Model**
+
+---
+## **Setting up a Data Model**
 
 - Create Django model classes
 - Create and run migrations
 - Edit data with admin interface
-
-### Migrate changes in database
 
 
 
@@ -97,6 +97,16 @@ python manage.py dbshell
 select * from django_migrations;
 
 ```
+---
+### Combining Model, View, And Template
+
+To create a template you need to create the directory templates/<appname> inside the django app folder(Ex: website/app/templates/app) 
+Inside this directory you put your html files
+In views.py, you return a render with the request and path of the html file
+Ex: ```return render(request, "app/welcome.html")```
+
+#### Template Variable and Dynamic Content
+
 
 ---
 ## Important commands for dealing with virtual environments
