@@ -5,10 +5,14 @@
     <title>Lesson: {{lesson.title}}</title>
 </head>
 <body>
-<p><h2><strong>{{lesson.title}}</strong></h2></p>
+<p>
+<h2><strong>{{lesson.title}}</strong></h2></p>
 <p><b>{{lesson.subject}}</b></p>
 <ol>
-    {{lesson.id}}
+    {% for ex in exercises %}
+    <li>{{ex.content}}</li>
+    {% endfor%}
 </ol>
+<footer><a href="{% url 'welcome' %}">Home</a></footer>
 </body>
 </html>

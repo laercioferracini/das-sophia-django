@@ -108,6 +108,13 @@ Ex: ```return render(request, "app/welcome.html")```
 #### Template Variable and Dynamic Content
 
 
+#### Urls and Link Building
+
+URLS
+- Link Building
+- Named URL mappings
+- URLs and apps
+- For loops in templates
 ---
 ## Important commands for dealing with virtual environments
 
