@@ -24,6 +24,6 @@ urlpatterns = [
     path('', welcome, name="welcome"),
     path('about', about, name="about"),
     path('phrase', phrase, name="phrase"),
-    path('meetings', include("meetings.urls")),
+    path('meetings/', include("meetings.urls")),
     path('lessons/<int:id>', lesson, name="lesson_detail")
 ]

@@ -3,42 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Das Sophia App</title>
+    <!--    <link rel="stylesheet" href="/static/app/styles.css">-->
+<!--    <link rel="stylesheet" href="/static/app/tailwind.css">-->
 </head>
-<body>
-<h1>Welcome to the Das Sophia App</h1>
-<p>
-    Here you will exercise you english learning.
-    We'll go through some exercises from the <em>Graded Exercises in English</em> book
-</p>
+<body class="bg-green-50">
+<div class="container mx-auto px-4">
+    <h1>Welcome to the Das Sophia App</h1>
+    <p>
+        Here you will exercise you english learning.
+        We'll go through some exercises from the <em>Graded Exercises in English</em> book
+    </p>
 
-<div>
-    <h2>Meetings</h2>
-    <p>There are currently {{num_meetings}} meeting in the database.</p>
-    <ul>
-        {% for meeting in meetings %}
-        <li>
-            <a href="{% url 'detail' meeting.id %}">{{ meeting.title }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'rooms' %}">Rooms</a>
-</div>
-<div>
-    <h2>Lessons</h2>
-    <p>There are {{num_lessons}} lessons in the database.</p>
-    <p>There are {{num_exercises}} exercises in the database.</p>
-    <ul>
-        {% for lesson in lessons %}
-        <li>
-            <a href="{% url 'lesson_detail' lesson.id %}">{{ lesson.title }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+    <div>
+        <h2>Meetings</h2>
+        <p>There are currently {{num_meetings}} meeting in the database.</p>
+        <ul>
+            {% for meeting in meetings %}
+            <li>
+                <a href="{% url 'detail' meeting.id %}" class="text-blue-600 visited:text-purple-600" >{{ meeting.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'rooms' %}">Rooms</a>
+    </div>
+    <div>
+        <h2>Lessons</h2>
+        <p>There are {{num_lessons}} lessons in the database.</p>
+        <p>There are {{num_exercises}} exercises in the database.</p>
+        <ul>
+            {% for lesson in lessons %}
+            <li class="py-4 first:pt-0">
+                <a href="{% url 'lesson_detail' lesson.id %}" class="text-blue-600 visited:text-purple-600">{{ lesson.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-<footer>
-    <a href="{% url 'welcome' %}">Home</a>
-    <a href="admin/">Admin</a>
-</footer>
+    <footer>
+        <a href="{% url 'welcome' %}" class="text-blue-600 visited:text-purple-600">Home</a>
+        <a href="admin/"class="text-blue-600 visited:text-purple-600">Admin</a>
+    </footer>
+</div>
 </body>
 </html>
