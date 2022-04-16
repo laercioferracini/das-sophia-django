@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Das Sophia App</title>
-    <!--    <link rel="stylesheet" href="/static/app/styles.css">-->
-<!--    <link rel="stylesheet" href="/static/app/tailwind.css">-->
-</head>
-<body class="bg-green-50">
-<div class="container mx-auto px-4">
-    <h1>Welcome to the Das Sophia App</h1>
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+
+<div class="container mx-auto">
+    <h1 class="text-4xl font-bold mb-2 text-black">Welcome to the Das Sophia App</h1>
     <p>
         Here you will exercise you english learning.
         We'll go through some exercises from the <em>Graded Exercises in English</em> book
@@ -20,7 +17,7 @@
         <ul>
             {% for meeting in meetings %}
             <li>
-                <a href="{% url 'detail' meeting.id %}" class="text-blue-600 visited:text-purple-600" >{{ meeting.title }}</a>
+                <a href="{% url 'detail' meeting.id %}" class="text-blue-600 visited:text-purple-600">{{ meeting.title }}</a>
             </li>
             {% endfor %}
         </ul>
@@ -32,17 +29,12 @@
         <p>There are {{num_exercises}} exercises in the database.</p>
         <ul>
             {% for lesson in lessons %}
-            <li class="py-4 first:pt-0">
+            <li class="py-4">
                 <a href="{% url 'lesson_detail' lesson.id %}" class="text-blue-600 visited:text-purple-600">{{ lesson.title }}</a>
             </li>
             {% endfor %}
         </ul>
     </div>
 
-    <footer>
-        <a href="{% url 'welcome' %}" class="text-blue-600 visited:text-purple-600">Home</a>
-        <a href="admin/"class="text-blue-600 visited:text-purple-600">Admin</a>
-    </footer>
 </div>
-</body>
-</html>
+{% endblock %}

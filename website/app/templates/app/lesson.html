@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lesson: {{lesson.title}}</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}{{lesson.title}}{% endblock %}
+
+{% block content %}
 <p>
 <h2><strong>{{lesson.title}}</strong></h2></p>
 <p><b>{{lesson.subject}}</b></p>
@@ -13,6 +11,5 @@
     <li>{{ex.content}}</li>
     {% endfor%}
 </ol>
-<footer><a href="{% url 'welcome' %}">Home</a></footer>
-</body>
-</html>
+
+{% endblock %}

@@ -13,7 +13,8 @@ Move to website folder
 
 The basic flow
 
-**Create a web page**
+**Cr
+eate a web page**
  - Create a django app
  - Add a view function
  - Assing a URL
@@ -98,23 +99,98 @@ select * from django_migrations;
 
 ```
 ---
-### Combining Model, View, And Template
+## Combining Model, View, And Template
 
 To create a template you need to create the directory templates/<appname> inside the django app folder(Ex: website/app/templates/app) 
 Inside this directory you put your html files
 In views.py, you return a render with the request and path of the html file
 Ex: ```return render(request, "app/welcome.html")```
 
-#### Template Variable and Dynamic Content
+### Template Variable and Dynamic Content
 
 
-#### Urls and Link Building
+### Urls and Link Building
 
 URLS
 - Link Building
 - Named URL mappings
 - URLs and apps
 - For loops in templates
+
+Ex: `{% url 'detail' meeting.id %}`
+You need to add in website/urls.py file
+
+```
+path('meetings/', include("meetings.urls")),
+```
+And the lines below in the meetings/urls.py file in the app meetings
+
+```
+urlpatterns = [
+    path('<int:id>', views.detail, name="detail"),
+    path('rooms', views.rooms_list, name="rooms")
+]
+
+```
+
+*For loops*
+```
+<ol>
+    {% for ex in exercises %}
+    <li>{{ex.content}}</li>
+    {% endfor%}
+</ol>
+```
+
+## Templates, Styling and static content
+
+To put static files like css, images, etc. You need to create the structure _<appfolder>/static/<appname>/style.css_
+
+Ex: `app/static/app/styles.css`
+
+Add this line in the html file
+```    
+<link rel="stylesheet" href="{% static 'app/tailwind.css' %}">
+ ```
+
+Stop the server and start again 
+Obs: In development mode you need to add ```--insecure``` in the commandline to get the static files
+
+#### Template inheritance
+
+Inside the templates' folder, create a html file base.html like this
+
+```html
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+</head>
+<body class="your-css-classes" style="your-font-family">
+{% block content%}
+{% endblock %}
+</body>
+</html>
+```
+
+In the parents html files, you can use this lines
+
+```html
+{% extends "base.html" %}
+
+{% block title %}Your title {{meeting.title}}{% endblock %}
+
+{% block content %}
+
+<p> The content is here </p>
+
+{% endblock %}
+```
+
 ---
 ## Important commands for dealing with virtual environments
 
