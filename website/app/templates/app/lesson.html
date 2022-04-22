@@ -4,11 +4,13 @@
 
 {% block content %}
 <p>
-<h2><strong>{{lesson.title}}</strong></h2></p>
-<p><b>{{lesson.subject}}</b></p>
+<h1><strong>{{lesson.title}}</strong></h1></p>
+<p><b>{{lesson.subtitle}}</b></p>
+<h3>{{lesson.description}}</h3>
 <ol>
     {% for ex in exercises %}
-    <li>{{ex.content}}</li>
+    <li>{{ex.statement}}</li>
+    <li>{{ex.sentence}}</li>
     {% endfor%}
 </ol>
 
