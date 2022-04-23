@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 
 # Create your views here.
-from app.models import Lesson, Exercices
+from app.models import Lesson, Exercice
 from meetings.models import Meeting
 
 
@@ -15,7 +15,7 @@ def welcome(request):
                       "num_meetings": Meeting.objects.count(),
                       "num_lessons": Lesson.objects.count(),
                       "lessons": Lesson.objects.all(),
-                      "num_exercises": Exercices.objects.count()
+                      "num_exercises": Exercice.objects.count()
                   })
 
 
@@ -30,7 +30,16 @@ def phrase(request):
 
 def lesson(request, id):
     result_lessons = get_object_or_404(Lesson, pk=id)
-    exercises = Exercices.objects.filter(lesson_id=result_lessons.id)
-    json_dec = json.decoder.JSONDecoder()
-    exercises.sentence = json_dec.dumps(exercises.sentence)
-    return render(request, "app/lesson.html", {"lesson": result_lessons, "exercises": exercises})
+    exercises = Exercice.objects.filter(lesson_id=result_lessons.id)
+    sentences = []
+    for ex in list(exercises.all()):
+        sentences = ex.sentence.split(';')
+        ex.sentence = sentences
+        print(ex.sentence)
+        for ss in sentences:
+            print(ss)
+
+    # exercises.sentence = json_dec.dumps(exercises.sentence)
+    return render(request, "app/lesson.html",
+                  {"lesson": result_lessons, "exercises": exercises, "sentences": sentences})
+

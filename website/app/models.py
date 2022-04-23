@@ -12,7 +12,7 @@ class Lesson(models.Model):
         return f"{self.title}"
 
 
-class Exercices(models.Model):
+class Exercice(models.Model):
     statement = models.CharField(max_length=300)
     sentence = models.TextField(null=True)
     datecreation = models.DateField(auto_now=True)
