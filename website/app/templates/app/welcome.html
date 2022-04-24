@@ -4,38 +4,25 @@
 
 {% block content %}
 
-<div class="container mx-auto">
-    <h1 class="text-4xl font-bold mb-2 text-black">Welcome to the Das Sophia App</h1>
-    <p>
-        Here you will exercise you english learning.
-        We'll go through some exercises from the <em>Graded Exercises in English</em> book
-    </p>
+<div class="container mx-auto my-6">
+  <h1 class="text-4xl font-bold mb-2 text-black">Welcome to the Das Sophia App</h1>
+  <p class="text-base font-light leading-relaxed mt-0 mb-4 text-gray-800">
+    Aqui você exercitará seu apredizado do inglês
+    Temos uma lista de exercícios do livro <em>Graded Exercises in English</em>
+  </p>
+  <div>
+    <h2 class="text-2xl font-bold mb-2 text-black">Lessons</h2>
+    <p>There are {{num_lessons}} lessons in the database.</p>
+    <!--                <p>There are {{num_exercises}} exercises in the database.</p>-->
+    <div class="grid  grid-cols-4 gap-1">
 
-    <div>
-        <h2 class="text-xl">Meetings</h2>
-        <p>There are currently {{num_meetings}} meeting in the database.</p>
-        <ul>
-            {% for meeting in meetings %}
-            <li>
-                <a href="{% url 'detail' meeting.id %}" class="text-blue-600 visited:text-purple-600">{{ meeting.title }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-        <a href="{% url 'rooms' %}">Rooms</a>
+      {% for lesson in lessons %}
+      <div class="bg-green-600 text-white text-center align-baseline py-2 text-lg ">
+        <a href="{% url 'lesson_detail' lesson.id %}" class="visited:text-purple-600">{{ lesson.title }}</a>
+      </div>
+      {% endfor %}
+
     </div>
-    <div>
-        <h2 class="text-2xl font-bold mb-2 text-black">Lessons</h2>
-        <!--        <p>There are {{num_lessons}} lessons in the database.</p>-->
-        <!--        <p>There are {{num_exercises}} exercises in the database.</p>-->
-        <div class="grid  grid-cols-4 gap-1">
-
-            {% for lesson in lessons %}
-            <div class="bg-green-600 text-white text-center align-baseline py-2 text-lg ">
-                <a href="{% url 'lesson_detail' lesson.id %}" class="visited:text-purple-600">{{ lesson.title }}</a>
-            </div>
-            {% endfor %}
-
-        </div>
-    </div>
+  </div>
 </div>
 {% endblock %}

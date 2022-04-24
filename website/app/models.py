@@ -4,7 +4,7 @@ from django.db import models
 class Lesson(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100, null=True)
-    description = models.TextField(max_length=1000, null=True)
+    description = models.TextField(max_length=10000, null=True)
     date_creation = models.DateField(auto_now=True)
     date_update = models.DateField(auto_now=True)
 
@@ -20,6 +20,10 @@ class Exercice(models.Model):
 
     def __str__(self):
         return f"{self.statement} from lesson {self.lesson.title}"
+
+
+class Answer(models.Model):
+    exercise = models.ForeignKey(Exercice, on_delete=models.CASCADE)
 
 
 class User(models.Model):
