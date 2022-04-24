@@ -4,7 +4,7 @@ from django.db import models
 class Lesson(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=100, null=True)
-    description = models.CharField(max_length=1000, null=True)
+    description = models.TextField(max_length=1000, null=True)
     date_creation = models.DateField(auto_now=True)
     date_update = models.DateField(auto_now=True)
 

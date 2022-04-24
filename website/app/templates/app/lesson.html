@@ -6,38 +6,40 @@
 <div id="menu" class="container mx-auto px-4 lg:pt-24 lg:pb-64">
     <div class="flex flex-wrap text-center justify-center">
         <div class="w-full lg:w-6/12 px-4">
-            <h2 class="text-4xl font-semibold text-black">{{lesson.title}} {{lesson.subtitle}}</h2>
-
+            <h2 class="text-4xl font-semibold text-black">
+                {{lesson.title}} {{lesson.subtitle}}
+            </h2>
             <p class="text-lg leading-relaxed mt-4  text-gray-500">
                 {{lesson.description}}
             </p>
         </div>
     </div>
     <div class="container mb-2 flex mx-auto w-full items-center justify-center">
-    <ol class="flex flex-col p-4">
-        {% for ex in exercises %}
-        <p class="text-lg leading-relaxed mb-4  text-blue-900">1. {{ex.statement}}</p>
-        {% for s in sentences %}
-        <li class="border-gray-400 flex flex-row p-1">
-            <div class="select-none flex flex-1 items-center p-4 transition duration-500 ease-in-out  rounded-2xl border-2 p-6 border-orange-400">
-                <div class="flex-1 pl-1 mr-16">
-                    <div class="font-medium">
-                        {{ s }}
+        <ol class="flex flex-col p-2">
+            {% for ex in exercises %}
+            <p class="leading-relaxed mb-2  text-blue-900">1. {{ex.statement}}</p>
+            {% for s in sentences %}
+            <li class="border-gray-400 flex flex-row p-1">
+                <div class="select-none flex flex-1 items-center p-0.5 transition duration-500 ease-in-out  rounded-2xl border-2 border-orange-400">
+                    <div class="flex-1 pl-5 mr-10">
+                        <div class="font-medium">
+                            {{ s }}
+                        </div>
                     </div>
-                </div>
-                <div class="bg-white p-1">
-                    <button class="min-w-auto w-32 h-10 bg-green-300 p-2 rounded-xl hover:bg-green-500 transition-colors duration-50 hover:animate-pulse ease-out text-white font-semibold">
-                        OK
-                    </button>
-                </div>
-            </div>
-        </li>
-        {% endfor %}
-        {% endfor %}
-    </ol>
-</div>
-</div>
+                    <div class="bg-white p-1">
+                        <!--<button class="min-w-auto w-32 h-10 bg-green-300 p-1 rounded-xl hover:bg-green-500 transition-colors duration-50 hover:animate-pulse ease-out text-white font-semibold">
+                            OK
+                        </button>-->
+                    </div>
 
+                </div>
+            </li>
+            <div>Reposta</div>
+            {% endfor %}
+            {% endfor %}
+        </ol>
+    </div>
+</div>
 
 
 {% endblock %}

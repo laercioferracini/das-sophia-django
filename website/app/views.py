@@ -35,9 +35,6 @@ def lesson(request, id):
     for ex in list(exercises.all()):
         sentences = ex.sentence.split(';')
         ex.sentence = sentences
-        print(ex.sentence)
-        for ss in sentences:
-            print(ss)
 
     # exercises.sentence = json_dec.dumps(exercises.sentence)
     return render(request, "app/lesson.html",
